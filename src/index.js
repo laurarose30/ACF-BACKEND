@@ -64,8 +64,8 @@ app.get('/', async (req, res) => {
 
 app.post('/', async (req, res) => {
   const newLesson = req.body;
-  const Lesson = new Lesson(newLesson);
-  await Lesson.save();
+  const lesson = new Lesson(newLesson);
+  await lesson.save();
   res.send({ message: 'New lesson inserted.' });
 });
 
