@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const programSchema = mongoose.Schema({
+const LessonSchema = mongoose.Schema({
   lesson: String,
   equipment: String,
   dress: String,
 })
 
-module.exports.Program = mongoose.model('Program', programSchema)
+module.exports.Lesson = mongoose.model('Lesson', LessonSchema)

@@ -8,11 +8,11 @@ const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 const {v4: uuidv4} = require('uuid');
 
-const { Lesson } = require('../models/lesson');
+const { Lesson } = require('../models/Lesson');
 const { Cart } = require('../models/cart');
 const { User } = require('../models/user');
 const { Todo} = require('../models/todo')
-mongoose.connect('mongodb+srv://anon45:IHATEDATABASES@cluster0.invl2.mongodb.net/training?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://mongo-zahra:clustercloud@cluster1.zuh4z.mongodb.net/military?retryWrites=true&w=majority');
 const port = process.env.PORT || 3002
 // defining the Express app
 const app = express();
