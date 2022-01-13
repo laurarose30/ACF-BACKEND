@@ -31,7 +31,7 @@ app.use(morgan('combined'));
 
 
 app.post('/auth', async (req,res) => {
-  const user = await User.findOne({ userName: req.body.userName })
+  const user = await User.findOne({ userName: req.body.userName, role: req.body.role })
   console.log(req.body)
   if(!user) {
     return res.sendStatus(401);
@@ -42,7 +42,7 @@ app.post('/auth', async (req,res) => {
 
   user.token = uuidv4()
   await user.save()
-  res.send({token: user.token})
+  res.send({token: user.token, role: user.role})
 
 })
 
@@ -67,16 +67,22 @@ app.post('/', async (req, res) => {
   const lesson = new Lesson(newLesson);
   await lesson.save();
   res.send({ message: 'New lesson inserted.' });
+  // if(!role'admin') {
+  //   return res.sendStatus(401);
 });
 
 app.delete('/:id', async (req, res) => {
   await Lesson.deleteOne({ _id: ObjectId(req.params.id) })
   res.send({ message: 'Lesson removed.' });
+  // if(!user'admin') {
+  //   return res.sendStatus(401);
 });
 
 app.put('/:id', async (req, res) => {
   await Lesson.findOneAndUpdate({ _id: ObjectId(req.params.id)}, req.body )
   res.send({ message: 'Lesson updated.' });
+  // if(!user'admin') {
+  //   return res.sendStatus(401);
 });
 
 
