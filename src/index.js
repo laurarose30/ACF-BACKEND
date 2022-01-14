@@ -12,7 +12,7 @@ const { Lesson } = require('../models/Lesson');
 const { Cart } = require('../models/cart');
 const { User } = require('../models/user');
 const { Todo} = require('../models/todo')
-mongoose.connect('mongodb+srv://mongo-zahra:clustercloud@cluster1.zuh4z.mongodb.net/military?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://Sazzle:sazzlemongo1@cluster0.opbm5.mongodb.net/ACFTrainingProgram?retryWrites=true&w=majority');
 const port = process.env.PORT || 3002
 // defining the Express app
 const app = express();
@@ -31,7 +31,7 @@ app.use(morgan('combined'));
 
 
 app.post('/auth', async (req,res) => {
-  const user = await User.findOne({ userName: req.body.userName, role: req.body.role })
+  const user = await User.findOne({ userName: req.body.userName})
   console.log(req.body)
   if(!user) {
     return res.sendStatus(401);
