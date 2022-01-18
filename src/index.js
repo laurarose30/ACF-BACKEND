@@ -33,6 +33,7 @@ app.use(morgan('combined'));
 app.post('/auth', async (req,res) => {
   const user = await User.findOne({ userName: req.body.userName})
   console.log(req.body)
+  console.log(user)
   if(!user) {
     return res.sendStatus(401);
   }
@@ -84,6 +85,38 @@ app.put('/:id', async (req, res) => {
   // if(!user'admin') {
   //   return res.sendStatus(401);
 });
+
+app.get('/lesson/:equipment', async (req, res) => {
+  const result = await Lesson.find({ equipment: req.params.equipment} ).lean()
+  res.send(result);
+});
+
+app.post('/lesson/search', async (req, res) => {
+  console.log(req.body)
+  const {sLesson, sEquipment, sDress, dateMin, dateMax } = req.body.sLesson
+  const query = {}
+  if (sLesson) {
+    query.lesson = sLesson
+  }
+  if (sEquipment){
+    query.equipment = sEquipment
+  }
+  if (sDress){
+    query.dress = sDress
+  }
+
+  if (dateMin){
+    query.date = { $gte: dateMin }
+  }
+  if (dateMax) {
+  query.date.$lte = dateMax
+  }
+  if (!dateMax && dateMin){
+    query.date={$eq:dateMin}
+  }
+  console.log(sLesson)
+  res.send(await Lesson.find(query).lean())
+})
 
 
 
