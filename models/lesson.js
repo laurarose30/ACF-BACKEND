@@ -7,5 +7,5 @@ const lessonSchema = mongoose.Schema({
   dress: String
 
 })
-
+lessonSchema.index({name: 'lessontext', 'lesson': 'text'});
 module.exports.Lesson = mongoose.model('Lesson', lessonSchema, 'lesson')

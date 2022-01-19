@@ -96,13 +96,13 @@ app.post('/lesson/search', async (req, res) => {
   const {sLesson, sEquipment, sDress, dateMin, dateMax } = req.body.sLesson
   const query = {}
   if (sLesson) {
-    query.lesson = sLesson
+    query.lesson = {$regex: sLesson,$options:'i'}
   }
   if (sEquipment){
-    query.equipment = sEquipment
+    query.equipment = {$regex: sEquipment,$options:'i'}
   }
   if (sDress){
-    query.dress = sDress
+    query.dress = {$regex: sDress,$options:'i'}
   }
 
   if (dateMin){
@@ -115,7 +115,7 @@ app.post('/lesson/search', async (req, res) => {
     query.date={$eq:dateMin}
   }
   console.log(sLesson)
-  res.send(await Lesson.find(query).lean())
+  res.send(await Lesson.find(query))
 })
 
 
