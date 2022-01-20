@@ -109,7 +109,7 @@ app.post('/lesson/search', async (req, res) => {
     query.date = { $gte: dateMin }
   }
   if (dateMax) {
-  query.date.$lte = dateMax
+  query.date ={$lte : dateMax}
   }
   if (!dateMax && dateMin){
     query.date={$eq:dateMin}
