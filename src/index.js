@@ -93,10 +93,13 @@ app.get('/lesson/:equipment', async (req, res) => {
 
 app.post('/lesson/search', async (req, res) => {
   console.log(req.body)
-  const {sLesson, sEquipment, sDress, dateMin, dateMax } = req.body.sLesson
+  const {sLesson, sLevel, sEquipment, sDress, dateMin, dateMax } = req.body.sLesson
   const query = {}
   if (sLesson) {
     query.lesson = {$regex: sLesson,$options:'i'}
+  }
+  if (sLevel){
+    query.level = {$regex: sLevel,$options:'i'}
   }
   if (sEquipment){
     query.equipment = {$regex: sEquipment,$options:'i'}

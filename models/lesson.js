@@ -4,7 +4,8 @@ const lessonSchema = mongoose.Schema({
   date: Date,
   lesson: String,
   equipment: String,
-  dress: String
+  dress: String,
+  level: String,
 
 })
 lessonSchema.index({name: 'lessontext', 'lesson': 'text'});
