@@ -70,6 +70,7 @@ app.post('/', async (req, res) => {
   res.send({ message: 'New lesson inserted.' });
   // if(!role'admin') {
   //   return res.sendStatus(401);
+  console.log()
 });
 
 app.delete('/:id', async (req, res) => {
