@@ -11,7 +11,7 @@ const {v4: uuidv4} = require('uuid');
 const { Lesson } = require('../models/Lesson');
 const { Cart } = require('../models/cart');
 const { User } = require('../models/user');
-const { Todo} = require('../models/todo')
+const { Register} = require('../models/register')
 mongoose.connect('mongodb+srv://Sazzle:sazzlemongo1@cluster0.opbm5.mongodb.net/ACFTrainingProgram?retryWrites=true&w=majority');
 const port = process.env.PORT || 3002
 // defining the Express app
@@ -46,6 +46,13 @@ app.post('/auth', async (req,res) => {
   res.send({token: user.token, role: user.role})
 
 })
+
+app.post('/register', async (req, res) => {
+  const newRegister = req.body;
+  const register = new User(newRegister);
+  await register.save();
+  res.send({ message: 'New user inserted.' });
+});
 
 app.use( async (req,res,next) => {
   const authHeader = req.headers['authorization']
@@ -130,12 +137,7 @@ app.get('/todo', async (req, res) => {
   res.send(await Todo.find());
 });
 
-app.post('/todo', async (req, res) => {
-  const newTodo = req.body;
-  const todo = new Todo(newTodo);
-  await todo.save();
-  res.send({ message: 'New todo inserted.' });
-});
+
 
 app.delete('/todo/:id', async (req, res) => {
   await Todo.deleteOne({ _id: ObjectId(req.params.id) })
