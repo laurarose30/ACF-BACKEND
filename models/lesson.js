@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const lessonSchema = mongoose.Schema({
   date: Date,
   lesson: Array,
-  equipment: String,
-  dress: String,
+  equipment: Array,
+  dress: Array,
   level: String,
-  instructor: String,
+  instructor: Array,
   subject: Array,
   
 })
