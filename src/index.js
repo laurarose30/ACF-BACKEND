@@ -88,6 +88,7 @@ app.delete('/:id', async (req, res) => {
 });
 
 app.put('/:id', async (req, res) => {
+  console.log(req.body)
   await Lesson.findOneAndUpdate({ _id: ObjectId(req.params.id)}, req.body )
   res.send({ message: 'Lesson updated.' });
   // if(!user'admin') {
@@ -100,8 +101,8 @@ app.get('/lesson/:equipment', async (req, res) => {
 });
 
 app.post('/lesson/search', async (req, res) => {
-  console.log(req.body)
-  const {sLesson, sLevel, sEquipment, sDress, dateMin, dateMax } = req.body.sLesson
+  
+  const {sLesson, sLevel, sEquipment, sDress, sInstructor, sSubject, dateMin, dateMax } = req.body.sLesson
   const query = {}
   if (sLesson) {
     query.lesson = {$regex: sLesson,$options:'i'}
@@ -113,6 +114,12 @@ app.post('/lesson/search', async (req, res) => {
     query.equipment = {$regex: sEquipment,$options:'i'}
   }
   if (sDress){
+    query.dress = {$regex: sDress,$options:'i'}
+  }
+  if (sInstructor){
+    query.dress = {$regex: sDress,$options:'i'}
+  }
+  if (sSubject){
     query.dress = {$regex: sDress,$options:'i'}
   }
 

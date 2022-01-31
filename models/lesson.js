@@ -7,7 +7,9 @@ const lessonSchema = mongoose.Schema({
   dress: String,
   level: String,
   instructor: String,
+  subject: Array,
   
 })
 lessonSchema.index({name: 'lessontext', 'lesson': 'text'});
+
 module.exports.Lesson = mongoose.model('Lesson', lessonSchema, 'lesson')
