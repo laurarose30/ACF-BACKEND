@@ -12,7 +12,7 @@ const { Lesson } = require('../models/Lesson');
 const { Cart } = require('../models/cart');
 const { User } = require('../models/user');
 const { Register} = require('../models/register')
-mongoose.connect('mongodb+srv://Sazzle:sazzlemongo1@cluster0.opbm5.mongodb.net/ACFTrainingProgram?retryWrites=true&w=majority');
+mongoose.connect('https://git.heroku.com/acf-training.git');
 const port = process.env.PORT || 3002
 // defining the Express app
 const app = express();
