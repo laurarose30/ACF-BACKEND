@@ -117,10 +117,10 @@ app.post('/lesson/search', async (req, res) => {
     query.dress = {$regex: sDress,$options:'i'}
   }
   if (sInstructor){
-    query.dress = {$regex: sDress,$options:'i'}
+    query.instructor = {$regex: sInstructor,$options:'i'}
   }
   if (sSubject){
-    query.dress = {$regex: sDress,$options:'i'}
+    query.subject = {$regex: sSubject,$options:'i'}
   }
 
   if (dateMin){
@@ -130,9 +130,10 @@ app.post('/lesson/search', async (req, res) => {
   query.date ={$lte : dateMax}
   }
   if (!dateMax && dateMin){
-    query.date={$eq:dateMin}
+    query.date={$eq:dateMin }
   }
-  console.log(sLesson)
+
+  console.log(dateMin)
   res.send(await Lesson.find(query))
 })
 
