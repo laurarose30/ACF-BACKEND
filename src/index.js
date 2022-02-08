@@ -1,7 +1,7 @@
 /// importing the dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { ObjectId } = require('mongodb');
@@ -25,7 +25,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 
 // enabling CORS for all requests
-
+app.use(cors());
 
 // adding morgan to log HTTP requests
 app.use(morgan('combined'));
