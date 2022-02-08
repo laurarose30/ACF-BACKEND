@@ -12,12 +12,13 @@ const { Lesson } = require('../models/Lesson');
 const { Cart } = require('../models/cart');
 const { User } = require('../models/user');
 const { Register} = require('../models/register')
-mongoose.connect('https://git.heroku.com/acf-training.git');
+mongoose.connect('mongodb+srv://Sazzle:sazzlemongo1@cluster0.opbm5.mongodb.net/ACFTrainingProgram?retryWrites=true&w=majority');
 const port = process.env.PORT || 3002
 // defining the Express app
 const app = express();
 
 // adding Helmet to enhance your API's security
+
 app.use(helmet());
 
 // using bodyParser to parse JSON bodies into JS objects
