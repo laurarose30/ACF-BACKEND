@@ -8,7 +8,7 @@ const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 const {v4: uuidv4} = require('uuid');
 
-const { Lesson } = require('../models/Lesson');
+const { Lesson } = require('../models/lesson');
 const { Cart } = require('../models/cart');
 const { User } = require('../models/user');
 const { Register} = require('../models/register')
